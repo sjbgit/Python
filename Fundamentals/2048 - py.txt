@@ -1,0 +1,149 @@
+"""
+Clone of 2048 game.
+"""
+
+import poc_2048_gui   
+import random
+
+# Directions, DO NOT MODIFY
+UP = 1
+DOWN = 2
+LEFT = 3
+RIGHT = 4
+
+# Offsets for computing tile indices in each direction.
+# DO NOT MODIFY this dictionary.    
+OFFSETS = {UP: (1, 0), 
+           DOWN: (-1, 0), 
+           LEFT: (0, 1), 
+           RIGHT: (0, -1)} 
+   
+def merge(line):
+    """
+    Helper function that merges a single row or column in 2048
+    """
+    # replace with your code
+    return []
+
+class TwentyFortyEight:
+    """
+    Class to run the game logic.
+    """
+
+    def __init__(self, grid_height, grid_width):
+        # replace with your code
+        self.grid_height = grid_height
+        self.grid_width = grid_width
+        #self.board = [[]]
+        self.reset()
+        
+        print self.grid_height
+        print self.grid_width
+    
+    def reset(self):
+        """
+        Reset the game so the grid is empty.
+        """
+        # replace with your code
+        self.board = []
+        for x in range(0, self.grid_height):  
+            self.board.append([])
+            for y in range(0, self.grid_width):
+                self.board[x].append(0)
+                #print self.board
+                #self.board = [x][y] = 0
+        #pass
+    
+    def __str__(self):
+        """
+        Return a string representation of the grid for debugging.
+        """
+        # replace with your code
+        #output = ''
+        #for x in range(0, self.grid_height): 
+        #    print str(self.board[x])
+            #output + '\n' + str(self.board[x])
+        #return output
+        return str(self.board)
+
+    def get_grid_height(self):
+        """
+        Get the height of the board.
+        """
+        # replace with your code
+        return self.grid_height
+    
+    def get_grid_width(self):
+        """
+        Get the width of the board.
+        """
+        # replace with your code
+        return self.grid_width
+                            
+    def move(self, direction):
+        """
+        Move all tiles in the given direction and add
+        a new tile if any tiles moved.
+        """
+        # replace with your code
+        pass
+        
+    def new_tile(self):
+        """
+        Create a new tile in a randomly selected empty 
+        square.  The tile should be 2 90% of the time and
+        4 10% of the time.
+        """
+        # replace with your code
+        items = []
+        for x in range(0, 9):
+            items.append(2)
+            
+        items.append(4)
+        random.shuffle(items)
+        isEmpty = True
+       
+        while isEmpty != False:
+            x = random.randint(0,self.grid_width - 1)
+            y = random.randint(0,self.grid_height - 1)
+            isEmpty = self.get_tile(x,y) == 0
+            #print x,y
+            if (isEmpty == True):
+                self.board[x][y] = items[0]
+        
+        
+        #print x, y
+        print items
+        pass
+        
+    def set_tile(self, row, col, value):
+        """
+        Set the tile at position row, col to have the given value.
+        """        
+        self.board[row][col] = value
+        pass
+
+    def get_tile(self, row, col):
+        """
+        Return the value of the tile at position row, col.
+        """        
+        # replace with your code
+        return self.board[row][col]
+    
+    def print_board(self):
+        for x in range(0, self.grid_height): 
+            print str(self.board[x])
+ 
+board = TwentyFortyEight(4, 4)    
+poc_2048_gui.run_gui(board)
+
+#board.set_tile(0,0,4)
+
+print board
+
+print board.get_tile(0,0)
+board.new_tile()
+print ''
+board.print_board()
+
+
