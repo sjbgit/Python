@@ -51,7 +51,7 @@ class TwentyFortyEight:
         # replace with your code
         self.grid_height = grid_height
         self.grid_width = grid_width
-        #self.board = [[]]
+        self.board = [[]]
         self.reset()
         
         self.set_indicies_dict()
@@ -146,10 +146,29 @@ class TwentyFortyEight:
         isEmpty = True
         counter = self.grid_width * self.grid_height
         
+        empty = []
+        
+        for x in range(0, self.grid_height):  
+            #self.board.append([])
+            for y in range(0, self.grid_width):
+                print('nt')                      
+                if (self.get_tile(x,y) == 0):
+                  empty.append((x,y))  
+                   
+        random.shuffle(empty)
+        index = random.randint(0,len(empty))
+        print 'index ' + str(index)
+        pos = empty[index - 1]
+        self.board[pos[0]][pos[1]] = items[0]
+        
+        print 'empty'
+        print empty
         #y = random.randint(0,self.grid_width - 1)
         #x = random.randint(0,self.grid_height - 1)
         #self.board[x][y] = items[0]
         
+        
+        """
         while isEmpty != False or counter <= 0:
             y = random.randint(0,self.grid_width - 1)
             x = random.randint(0,self.grid_height - 1)
@@ -161,7 +180,7 @@ class TwentyFortyEight:
             
             random.shuffle(items)
             counter -= 1
-        
+        """
         
         #print x, y
         print items
@@ -194,7 +213,7 @@ print 'init'
 
 #board.set_tile(0,0,4)
 
-print board
+board.print_board()
 
 print board.get_tile(0,0)
 board.new_tile()
