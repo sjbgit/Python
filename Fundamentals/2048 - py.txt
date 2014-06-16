@@ -2,7 +2,7 @@
 Clone of 2048 game.
 """
 
-import poc_2048_gui   
+#import poc_2048_gui   
 import random
 
 # Directions, DO NOT MODIFY
@@ -23,6 +23,23 @@ def merge(line):
     Helper function that merges a single row or column in 2048
     """
     # replace with your code
+    non_zero = []
+    for x in range(len(line)):
+        print line[x]
+        if (line[x] != 0):
+            non_zero.append(line[x])
+    
+    has_merged = []
+    result = []
+    for x in range(len(non_zero)):
+        if (x < len(non_zero)):
+            print 'x'
+            #if (non_zero[x] == non_zero[x + 1]):
+            #    result.append(non_zero[x] + non_zero[x + 1])
+                #has_merged[x] = True
+                #has_merged[x + 1] = True
+    
+    #return non_zero
     return []
 
 class TwentyFortyEight:
@@ -127,17 +144,23 @@ class TwentyFortyEight:
         items.append(4)
         random.shuffle(items)
         isEmpty = True
-       
-        while isEmpty != False:
+        counter = self.grid_width * self.grid_height
+        
+        #y = random.randint(0,self.grid_width - 1)
+        #x = random.randint(0,self.grid_height - 1)
+        #self.board[x][y] = items[0]
+        
+        while isEmpty != False or counter <= 0:
             y = random.randint(0,self.grid_width - 1)
             x = random.randint(0,self.grid_height - 1)
-            #print ' try get tile'
-            #print x, y
-            #print '-----'
+          
             isEmpty = self.get_tile(x,y) == 0
-            #print x,y
+            
             if (isEmpty == True):
                 self.board[x][y] = items[0]
+            
+            random.shuffle(items)
+            counter -= 1
         
         
         #print x, y
@@ -167,7 +190,7 @@ class TwentyFortyEight:
  
 board = TwentyFortyEight(5, 4) 
 print 'init'
-poc_2048_gui.run_gui(board)
+#poc_2048_gui.run_gui(board)
 
 #board.set_tile(0,0,4)
 
@@ -177,5 +200,9 @@ print board.get_tile(0,0)
 board.new_tile()
 print ''
 board.print_board()
+print '----------------------'
+line = [2, 0, 2, 2]
+print merge(line)
+print line
 
 
