@@ -37,14 +37,46 @@ class TwentyFortyEight:
         #self.board = [[]]
         self.reset()
         
+        #self.set_indicies_dict()
+        
         print self.grid_height
         print self.grid_width
+        
+    def set_indicies_dict(self):
+        up = []
+        for x in range(0, self.grid_width):
+            up.append((0,x))
+            
+        down = []
+        for x in range(0, self.grid_width - 1):
+            down.append((self.grid_height - 1,x))
+            
+        left = []
+        for x in range(0, self.grid_height):
+            left.append((x,0))
+            
+        right = []
+        for x in range(0, self.grid_height):
+            right.append((x,self.grid_width - 1))
+          
+        print 'up'    
+        print up
+        
+        print 'down'    
+        print down
+        
+        print 'left'    
+        print left
+        
+        print 'right'    
+        print right
     
     def reset(self):
         """
         Reset the game so the grid is empty.
         """
         # replace with your code
+        print 'reset'
         self.board = []
         for x in range(0, self.grid_height):  
             self.board.append([])
@@ -53,6 +85,7 @@ class TwentyFortyEight:
                 #print self.board
                 #self.board = [x][y] = 0
         #pass
+        print 'end reset'
     
     def __str__(self):
         """
@@ -86,6 +119,7 @@ class TwentyFortyEight:
         a new tile if any tiles moved.
         """
         # replace with your code
+        print direction
         pass
         
     def new_tile(self):
@@ -104,8 +138,11 @@ class TwentyFortyEight:
         isEmpty = True
        
         while isEmpty != False:
-            x = random.randint(0,self.grid_width - 1)
-            y = random.randint(0,self.grid_height - 1)
+            y = random.randint(0,self.grid_width - 1)
+            x = random.randint(0,self.grid_height - 1)
+            print ' try get tile'
+            print x, y
+            print '-----'
             isEmpty = self.get_tile(x,y) == 0
             #print x,y
             if (isEmpty == True):
@@ -128,13 +165,17 @@ class TwentyFortyEight:
         Return the value of the tile at position row, col.
         """        
         # replace with your code
+        
+        print 'get tile ' + str(row) + ' ' + str(col)
+        self.print_board()
         return self.board[row][col]
     
     def print_board(self):
         for x in range(0, self.grid_height): 
             print str(self.board[x])
  
-board = TwentyFortyEight(4, 4)    
+board = TwentyFortyEight(5, 4) 
+print 'init'
 poc_2048_gui.run_gui(board)
 
 #board.set_tile(0,0,4)
