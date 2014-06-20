@@ -109,7 +109,7 @@ def strategy_cursor(cookies, cps, time_left, build_info):
     functions must do this and return None rather than an item you
     can't buy in the time left.
     """
-    return "Cursor "
+    return "Cursor"
 
 def strategy_none(cookies, cps, time_left, build_info):
     """
