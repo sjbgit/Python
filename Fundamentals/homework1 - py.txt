@@ -20,13 +20,16 @@ def resources_vs_time(upgrade_cost_increment, num_upgrade):
     lst = []
     for _times in range(num_upgrade):
         time = time + (cost / rate)
-        resources += rate
+        resources += cost
         lst.append([time, resources])
         
         rate += 1
         cost += upgrade_cost_increment
+        
+        print '================================'
         print 'cost ' + str(cost)
         print 'rate ' + str(rate)
+        print 'resources ' + str(resources)
     
     """
     time = 0
