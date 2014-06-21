@@ -12,6 +12,23 @@ def resources_vs_time(upgrade_cost_increment, num_upgrade):
     """
     Build function that performs unit upgrades with specified cost increments
     """
+    
+    time = 0.0
+    resources = 0
+    cost = 1.0
+    rate = 1
+    lst = []
+    for _times in range(num_upgrade):
+        time = time + (cost / rate)
+        resources += rate
+        lst.append([time, resources])
+        
+        rate += 1
+        cost += upgrade_cost_increment
+        print 'cost ' + str(cost)
+        print 'rate ' + str(rate)
+    
+    """
     time = 0
     resources = 0
     rgr = 1
@@ -23,6 +40,8 @@ def resources_vs_time(upgrade_cost_increment, num_upgrade):
         rgr += 1
         cost += increment
         lst.append([cost/rgr, resources])
+    """
+    
     return lst
 
 def test():
